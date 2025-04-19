@@ -10,6 +10,7 @@ mar-imputation-demo/
 │   └── diabetes.xlsx
 ├── code/
 │   └── generate_mar_data.py
+    └── model_func_limited.py 
 └── README.md
 ```
 
