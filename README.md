@@ -1,40 +1,33 @@
-# MAR Imputation Example
+## 💡 Açıklamalar
 
-Bu proje, BMI değişkenine bağlı olarak MAR (Missing At Random) eksiklik yapısı oluşturulmuş bir veri seti üretmek ve bu yapıyı bootstrap örneklemesiyle analiz etmek amacıyla hazırlanmıştır.
+### `generate_mar_data.py`:
+- Verilen veri setinde BMI değişkenine bağlı olarak bağımlı değişken `Y` için MAR yapısında eksiklik oluşturur.
+- `y_comp`: Eksiklik öncesi gerçek değerler
+- `y_miss`: Eksik olan gözlemler (True/False olarak)
 
-## 📁 Klasör Yapısı
+### `model_func_limited.py`:
+- İteratif olarak çalışan 3 farklı regresyon modeli içerir:
+  - Linear Regression
+  - Lasso Regression
+  - Decision Tree Regression
+- Convergence (yakınsama) kontrolü `mapc()` fonksiyonu ile yapılır.
 
-```
-mar-imputation-demo/
-├── data/
-│   └── diabetes.xlsx
-├── code/
-│   └── generate_mar_data.py
-    └── model_func_limited.py 
-└── README.md
-```
-
-## 💡 Açıklama
-
-`generate_mar_data.py` dosyası:
-
-- Orijinal veri setini okur (`data/diabetes.xlsx`)
-- BMI değişkenine bağlı olarak bağımlı değişken `Y`'de %20 oranında MAR tipi eksiklik oluşturur
-- Eksiklik öncesi gerçek Y değerlerini `y_comp` kolonunda saklar
-- Eksik değerlerin olduğu satırları `y_miss` kolonunda True/False olarak işaretler
+### `khko_simulation_runner_global.py`:
+- 1000 bootstrap örneğiyle MAR veriler üretir.
+- Yukarıdaki modellerle imputasyon yapar.
+- RMSE ve KHKO değerlerini hesaplar.
+- Sonuçları `output/sonucden25_1.csv` dosyasına kaydeder.
 
 ## 🧪 Kullanım
 
-Kodun çalışması için Python 3 ve `pandas`, `numpy` kütüphaneleri yüklü olmalıdır.
+Öncelikle aşağıdaki kütüphanelerin kurulu olması gerekir:
 
 ```bash
-python code/generate_mar_data.py
-```
+pip install pandas numpy scikit-learn
 
-Çalıştırıldığında ilk 5 satır ekrana yazdırılır.
 
 ## ✍️ Yazar
 
 **Semih Ergişi**  
-PhD Student in Biostatistics  
+PhD in Biostatistics  
 Ankara University Faculty of Medicine
