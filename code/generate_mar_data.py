@@ -27,25 +27,27 @@ def generate_mar_bootstrap(data, n_obs, missing_rate, dependent_col,
     boot = boot[reordered_cols].sort_index()
     return boot
 
-if __name__ == "__main__":
-    # 🔹 Veri yolu
-    path_to_data = "../data/diabetes.xlsx"
+#%%opsiyonel olarak deneme yapılabilir.
+#if __name__ == "__main__":
+#    # 🔹 Veri yolu
+#    path_to_data = "../data/diabetes.xlsx"
     
     # 🔹 Veriyi oku
-    df = pd.read_excel(path_to_data)
+#    df = pd.read_excel(path_to_data)
 
     # 🔹 Parametreleri buraya sabit yaz
-    mar_sample = generate_mar_bootstrap(
-        data=df,
-        n_obs=400,
-        missing_rate=0.2,
-        dependent_col='Y',
-        mar_covariate='BMI',
-        iteration=0,
-        random_seed=42
-    )
+#    mar_sample = generate_mar_bootstrap(
+#       data=df,
+#        n_obs=400,
+#        missing_rate=0.2,
+#        dependent_col='Y',
+#        mar_covariate='BMI',
+#        iteration=1,
+#        random_seed=42
+#    )
 
     # 🔹 İlk satırları yazdır
-    print("\n📋 İlk 5 satır:")
-    print(mar_sample.head())
+#    print("\n📋 İlk 5 satır:")
+#    print(mar_sample.head())
+#%%
 
