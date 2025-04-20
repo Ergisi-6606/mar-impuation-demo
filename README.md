@@ -1,29 +1,35 @@
-## 💡 Açıklamalar
+# 📊 Iterative Imputation with MAR Missingness (Lasso, Linear, Tree)
 
-### `generate_mar_data.py`:
-- Verilen veri setinde BMI değişkenine bağlı olarak bağımlı değişken `Y` için MAR yapısında eksiklik oluşturur.
-- `y_comp`: Eksiklik öncesi gerçek değerler
-- `y_miss`: Eksik olan gözlemler (True/False olarak)
+Bu proje, BMI değişkenine bağlı olarak MAR (Missing At Random) yapısında eksik veri üretilmesini ve bu eksik verinin Lasso, Doğrusal Regresyon ve Karar Ağacı regresyon modelleri ile **iteratif olarak doldurulmasını** sağlamaktadır.
 
-### `model_func_limited.py`:
-- İteratif olarak çalışan 3 farklı regresyon modeli içerir:
-  - Linear Regression
-  - Lasso Regression
-  - Decision Tree Regression
-- Convergence (yakınsama) kontrolü `mapc()` fonksiyonu ile yapılır.
+## 🔧 Kullanılan Dosyalar
 
-### `khko_simulation_runner_global.py`:
-- 1000 bootstrap örneğiyle MAR veriler üretir.
-- Yukarıdaki modellerle imputasyon yapar.
-- RMSE ve KHKO değerlerini hesaplar.
-- Sonuçları `output/sonucden25_1.csv` dosyasına kaydeder.
+| Dosya Adı                        | Açıklama |
+|----------------------------------|----------|
+| `generate_mar_data.py`           | BMI değişkenine bağlı olarak MAR tipi eksik veri üreten fonksiyonu içerir |
+| `converged_fill_function.py`     | Lasso, LinearRegression ve DecisionTree ile convergence kontrollü eksik veri doldurma |
+| `iterated_imputed_dataset.py`    | Yukarıdaki modülleri kullanarak 10 farklı bootstrap örneğinde eksik veriyi tamamlayan ana script |
 
-## 🧪 Kullanım
+---
 
-Öncelikle aşağıdaki kütüphanelerin kurulu olması gerekir:
+## 🧪 Kullanım Talimatı
 
+1. Bu repoyu klonlayın veya ZIP olarak indirin:
 ```bash
-pip install pandas numpy scikit-learn
+git clone https://github.com/kullaniciadi/mar-imputation-demo.git
+
+## Klasör Yapısı
+
+mar-imputation-demo/
+├── code/
+│   ├── generate_mar_data.py
+│   ├── converged_fill_function.py
+│   └── iterated_imputed_dataset.py
+├── data/
+│   └── diabetes.xlsx
+├── output/
+│   └── (istenirse imputasyon sonrası kayıt yapılabilir)
+└── README.md
 
 
 ## ✍️ Yazar
