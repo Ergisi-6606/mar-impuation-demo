@@ -59,7 +59,7 @@ for i in range(mn, mx):
 
 # Örnek çıktı
 # Aşağıdaki kod yardımıyla impute edilmiş veri setleri ekrana yazdırılabilir. 
-# Below cen be used to impute dataset and written in the console.  
+# Below can be used to impute dataset and written in the console.  
 # To get iteration number and convergence values, [0] can be changed to [1] and [2]
 for i in range(1, 11):
     print("Lasso:")
